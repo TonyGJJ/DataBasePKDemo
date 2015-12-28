@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		538593DE65959DC3842CDEF2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9C9A16B881545BABDA81AC /* libPods.a */; };
+		CD01492A1C30E115005AAF50 /* RTestDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0149291C30E115005AAF50 /* RTestDataBase.m */; };
+		CD01492F1C30E4DF005AAF50 /* CoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01492C1C30E4DF005AAF50 /* CoreDataProvider.m */; };
+		CD0149301C30E4DF005AAF50 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01492E1C30E4DF005AAF50 /* DataBaseManager.m */; };
+		CD0149331C30E4FD005AAF50 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD0149311C30E4FD005AAF50 /* CoreDataModel.xcdatamodeld */; };
+		CD01493E1C30E586005AAF50 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01493B1C30E586005AAF50 /* Entity+CoreDataProperties.m */; };
+		CD01493F1C30E586005AAF50 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01493D1C30E586005AAF50 /* Entity.m */; };
 		EACE4C171C2A940400A3B6C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE4C161C2A940400A3B6C8 /* main.m */; };
 		EACE4C1A1C2A940400A3B6C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE4C191C2A940400A3B6C8 /* AppDelegate.m */; };
 		EACE4C1D1C2A940400A3B6C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE4C1C1C2A940400A3B6C8 /* ViewController.m */; };
@@ -39,6 +45,17 @@
 /* Begin PBXFileReference section */
 		1C9C9A16B881545BABDA81AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		829CCD1028EAA274B03B5127 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CD0149281C30E115005AAF50 /* RTestDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTestDataBase.h; sourceTree = "<group>"; };
+		CD0149291C30E115005AAF50 /* RTestDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTestDataBase.m; sourceTree = "<group>"; };
+		CD01492B1C30E4DF005AAF50 /* CoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataProvider.h; sourceTree = "<group>"; };
+		CD01492C1C30E4DF005AAF50 /* CoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataProvider.m; sourceTree = "<group>"; };
+		CD01492D1C30E4DF005AAF50 /* DataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
+		CD01492E1C30E4DF005AAF50 /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
+		CD0149321C30E4FD005AAF50 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		CD01493A1C30E586005AAF50 /* Entity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CD01493B1C30E586005AAF50 /* Entity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entity+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CD01493C1C30E586005AAF50 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		CD01493D1C30E586005AAF50 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
 		D1AA81CD63B74356134968E8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EACE4C121C2A940400A3B6C8 /* DataBasePKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataBasePKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACE4C161C2A940400A3B6C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,6 +112,31 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CD0149251C30E0F0005AAF50 /* CDDataBase */ = {
+			isa = PBXGroup;
+			children = (
+				CD01492B1C30E4DF005AAF50 /* CoreDataProvider.h */,
+				CD01492C1C30E4DF005AAF50 /* CoreDataProvider.m */,
+				CD01492D1C30E4DF005AAF50 /* DataBaseManager.h */,
+				CD01492E1C30E4DF005AAF50 /* DataBaseManager.m */,
+				CD0149311C30E4FD005AAF50 /* CoreDataModel.xcdatamodeld */,
+				CD01493A1C30E586005AAF50 /* Entity+CoreDataProperties.h */,
+				CD01493B1C30E586005AAF50 /* Entity+CoreDataProperties.m */,
+				CD01493C1C30E586005AAF50 /* Entity.h */,
+				CD01493D1C30E586005AAF50 /* Entity.m */,
+			);
+			path = CDDataBase;
+			sourceTree = "<group>";
+		};
+		CD0149271C30E103005AAF50 /* RDataBase */ = {
+			isa = PBXGroup;
+			children = (
+				CD0149281C30E115005AAF50 /* RTestDataBase.h */,
+				CD0149291C30E115005AAF50 /* RTestDataBase.m */,
+			);
+			path = RDataBase;
+			sourceTree = "<group>";
+		};
 		EACE4C091C2A940400A3B6C8 = {
 			isa = PBXGroup;
 			children = (
@@ -120,9 +162,9 @@
 		EACE4C141C2A940400A3B6C8 /* DataBasePKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				EACE4C481C2A9DAC00A3B6C8 /* CDDataBase */,
+				CD0149271C30E103005AAF50 /* RDataBase */,
+				CD0149251C30E0F0005AAF50 /* CDDataBase */,
 				EACE4C491C2A9DAC00A3B6C8 /* FMDataBase */,
-				EACE4C4A1C2A9DAC00A3B6C8 /* RDataBase */,
 				EACE4C181C2A940400A3B6C8 /* AppDelegate.h */,
 				EACE4C191C2A940400A3B6C8 /* AppDelegate.m */,
 				EACE4C1B1C2A940400A3B6C8 /* ViewController.h */,
@@ -162,13 +204,6 @@
 			path = DataBasePKDemoUITests;
 			sourceTree = "<group>";
 		};
-		EACE4C481C2A9DAC00A3B6C8 /* CDDataBase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CDDataBase;
-			sourceTree = "<group>";
-		};
 		EACE4C491C2A9DAC00A3B6C8 /* FMDataBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,13 +211,6 @@
 				EACE4C4C1C2A9F5E00A3B6C8 /* GFMDataBase.m */,
 			);
 			path = FMDataBase;
-			sourceTree = "<group>";
-		};
-		EACE4C4A1C2A9DAC00A3B6C8 /* RDataBase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RDataBase;
 			sourceTree = "<group>";
 		};
 		EF573D53EDB5FB0CF79F1515 /* Frameworks */ = {
@@ -263,6 +291,7 @@
 				TargetAttributes = {
 					EACE4C111C2A940400A3B6C8 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 6ETG3MVCX4;
 					};
 					EACE4C2A1C2A940500A3B6C8 = {
 						CreatedOnToolsVersion = 7.2;
@@ -374,9 +403,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD01493F1C30E586005AAF50 /* Entity.m in Sources */,
 				EACE4C1D1C2A940400A3B6C8 /* ViewController.m in Sources */,
 				EACE4C1A1C2A940400A3B6C8 /* AppDelegate.m in Sources */,
 				EACE4C171C2A940400A3B6C8 /* main.m in Sources */,
+				CD0149331C30E4FD005AAF50 /* CoreDataModel.xcdatamodeld in Sources */,
+				CD01492F1C30E4DF005AAF50 /* CoreDataProvider.m in Sources */,
+				CD01493E1C30E586005AAF50 /* Entity+CoreDataProperties.m in Sources */,
+				CD0149301C30E4DF005AAF50 /* DataBaseManager.m in Sources */,
+				CD01492A1C30E115005AAF50 /* RTestDataBase.m in Sources */,
 				EACE4C4D1C2A9F5E00A3B6C8 /* GFMDataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,10 +552,13 @@
 			baseConfigurationReference = D1AA81CD63B74356134968E8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DataBasePKDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GuoJJ.DataBasePKDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -529,10 +567,13 @@
 			baseConfigurationReference = 829CCD1028EAA274B03B5127 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DataBasePKDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GuoJJ.DataBasePKDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -624,6 +665,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD0149311C30E4FD005AAF50 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD0149321C30E4FD005AAF50 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = CD0149321C30E4FD005AAF50 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EACE4C0A1C2A940400A3B6C8 /* Project object */;
 }
