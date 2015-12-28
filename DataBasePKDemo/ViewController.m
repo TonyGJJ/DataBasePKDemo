@@ -21,19 +21,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSDate *oldDate = [NSDate date];
-
-    [self insertFMDB:oldDate];
+//    [self insertFMDB:oldDate];
 //    [self insertCDDB:oldDate];
-//    [self insertRDB:oldDate];
+    [self insertRDB];
+//    [self insertRDBALL];
 }
 
-- (void)insertFMDB:(NSDate *)date
+- (void)insertFMDB
 {
+    NSDate *date = [NSDate date];
     GFMDataBase *fmDataBase = [GFMDataBase sharedInstance];
     [fmDataBase dataBasePath];
     [self printWillFuncTime];
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1000; i++) {
         NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
         [fmDataBase insertData:str];
         NSLog(@"插入第%d条数据",i+1);
@@ -41,27 +41,47 @@
     [self printFuncDidTime:date];
 }
 
-- (void)insertCDDB:(NSDate *)date
+- (void)insertCDDB
 {
+    NSDate *date = [NSDate date];
     RLMRealm *realm = [RLMRealm defaultRealm];
     [self printWillFuncTime];
     // Realm 插入数据
     [realm transactionWithBlock:^{
-        for (int i = 0; i < 10000; i ++) {
+        for (int i = 0; i < 1000; i ++) {
             NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
             RTestDataBase *rDataBase = [[RTestDataBase alloc] init];
             rDataBase.text = str;
             [realm addObject:rDataBase];
+            NSLog(@"插入第%d条数据",i+1);
         }
     }];
     [self printFuncDidTime:date];
 }
 
-- (void)insertRDB:(NSDate *)date
+- (void)insertRDB
 {
+    NSDate *date = [NSDate date];
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [self printWillFuncTime];
+    for (int i = 0; i < 1000; i ++) {
+        NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
+        [realm beginWriteTransaction];
+        RTestDataBase *rDataBase = [[RTestDataBase alloc] init];
+        rDataBase.text = str;
+        [realm addObject:rDataBase];
+        [realm commitWriteTransaction];
+        NSLog(@"插入第%d条数据",i+1);
+    }
+    [self printFuncDidTime:date];
+}
+
+- (void)insertRDBALL
+{
+    NSDate *date = [NSDate date];
     DataBaseManager *cdDataBase = [DataBaseManager sharedInstance];
     [self printWillFuncTime];
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1000; i++) {
         NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
         // CoreData插入数据
         [cdDataBase insertManagedObject:str];
