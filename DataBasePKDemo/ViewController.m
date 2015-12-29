@@ -57,6 +57,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DataBaseTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self process:cell atIndexPath:indexPath];
 }
 
@@ -67,6 +68,7 @@
     
     if (activitTag == cell.activityView.tag) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView setUserInteractionEnabled:NO];
             [cell.activityView setHidden:NO];
             [cell.activityView startAnimating];
             [cell.timeLabel setHidden:YES];
@@ -122,6 +124,7 @@
                 cell.timeLabel.text = str;
             });
         }
+        [self.tableView setUserInteractionEnabled:YES];
     });
 }
 
