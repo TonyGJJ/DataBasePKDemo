@@ -24,4 +24,15 @@
 //    return @[];
 //}
 
+- (NSArray *)selectDataBase
+{
+    NSMutableArray *array = [NSMutableArray array];
+    RLMResults *results = [RTestDataBase allObjects];
+    for (int i = 0; i < results.count; i ++) {
+        RTestDataBase *rTestDataBase = [results objectAtIndex:i];
+        [array addObject:rTestDataBase];
+        [array addObject:rTestDataBase];
+    }
+    return array;
+}
 @end

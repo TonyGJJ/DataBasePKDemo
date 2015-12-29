@@ -14,4 +14,5 @@
 - (void)dataBasePath;
 - (void)insertData:(NSString *)str;
 - (void)deleteData:(NSString *)str;
+- (NSArray *)selectData;
 @end

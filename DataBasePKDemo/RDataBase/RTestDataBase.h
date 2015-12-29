@@ -10,6 +10,8 @@
 
 @interface RTestDataBase : RLMObject
 @property NSString *text;
+
+- (NSArray *)selectDataBase;
 @end
 
 // This protocol enables typed collections. i.e.:

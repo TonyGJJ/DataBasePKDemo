@@ -11,6 +11,7 @@
 
 @interface GFMDataBase ()
 @property (strong, nonatomic) FMDatabase *dataBase;
+@property (strong, nonatomic) FMDatabaseQueue *queue;
 @end
 
 @implementation GFMDataBase
@@ -33,9 +34,9 @@
         NSString *dataPath = [path stringByAppendingPathComponent:@"FMDataBase.db"];
         
         self.dataBase = [FMDatabase databaseWithPath:dataPath];
-        
         if ([self.dataBase open]) {
             NSLog(@"打开成功");
+            self.queue = [FMDatabaseQueue databaseQueueWithPath:self.dataBase.databasePath];
             [self creatTable];
         } else {
             NSLog(@"打开失败");
@@ -47,7 +48,9 @@
 - (void)creatTable
 {
     NSString *creatTable = @"CREATE TABLE IF NOT EXISTS Test (id INTEGER PRIMARY KEY,text TEXT)";
-    [self.dataBase executeUpdate:creatTable];
+    [self.queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        [db executeUpdate:creatTable];
+    }];
 }
 
 - (void)dataBasePath
@@ -58,12 +61,30 @@
 - (void)insertData:(NSString *)str
 {
     NSString *insertStr = @"INSERT INTO Test (text)VALUES(?)";
-    [self.dataBase executeUpdate:insertStr,str];
+    [self.queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        [db executeUpdate:insertStr,str];
+    }];
+}
+
+- (NSArray *)selectData
+{
+    NSMutableArray *array = [NSMutableArray array];
+    NSString *selectSQL = [NSString stringWithFormat:@"SELECT * FROM Test"];
+    [self.queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        FMResultSet *ressuSet = [db executeQuery:selectSQL];
+        while ([ressuSet next]) {
+            NSString *str = [ressuSet stringForColumn:@"text"];
+            [array addObject:str];
+        }
+    }];
+    return array;
 }
 
 - (void)deleteData:(NSString *)str
 {
     NSString *deleteStr = @"DELETE FROM Test WHERE text = ?";
-    [self.dataBase executeUpdate:deleteStr,str];
+    [self.queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        [db executeUpdate:deleteStr,str];
+    }];
 }
 @end
