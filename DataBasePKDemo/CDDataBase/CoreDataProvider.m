@@ -39,7 +39,7 @@
     
     // 在主线程做
     _managedObjectContext = [[NSManagedObjectContext alloc]
-                             initWithConcurrencyType:NSMainQueueConcurrencyType];
+                             initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
 }

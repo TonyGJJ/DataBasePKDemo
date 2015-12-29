@@ -16,6 +16,9 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *dataArray;
+
+@property (strong, nonatomic) NSArray *insetllArray;
+
 @end
 
 @implementation ViewController
@@ -24,6 +27,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"程序启动");
+   
+    //第一种方法： NSFileManager实例方法读取数据
+    NSString* paths = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"txt"];
+    NSString *str = [NSString stringWithContentsOfFile:paths encoding:NSUTF8StringEncoding error:nil];
+    
+    self.insetllArray = [str componentsSeparatedByString:@"\n"];
+    
     
     self.dataArray = @[@"FMDB插入数据",
                        @"FMDB删除数据",
@@ -134,9 +144,11 @@
     GFMDataBase *fmDataBase = [GFMDataBase sharedInstance];
     [fmDataBase dataBasePath];
     [self printWillFuncTime];
-    for (int i = 0; i < 1000; i++) {
-        NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
-        [fmDataBase insertData:str];
+    
+    for (int i = 0; i < 100; i++) {
+        for (NSString *str in self.insetllArray) {
+            [fmDataBase insertData:str];
+        }
         NSLog(@"插入第%d条数据",i+1);
     }
     
@@ -161,12 +173,13 @@
     NSDate *date = [NSDate date];
     DataBaseManager *cdDataBase = [DataBaseManager sharedInstance];
     [self printWillFuncTime];
-    for (int i = 0; i < 1000; i++) {
-        NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
-        // CoreData插入数据
-        [cdDataBase insertManagedObject:str];
-        [cdDataBase saveManaged];
-        NSLog(@"插入第%d条数据",i+1);
+    for (int i = 0; i < 100; i++) {
+        for (NSString *str in self.insetllArray) {
+             // CoreData插入数据
+             [cdDataBase insertManagedObject:str];
+             [cdDataBase saveManaged];
+        }
+            NSLog(@"插入第%d条数据",i+1);
     }
     return [self printFuncDidTime:date];
 }
@@ -189,10 +202,12 @@
     NSDate *date = [NSDate date];
     DataBaseManager *cdDataBase = [DataBaseManager sharedInstance];
     [self printWillFuncTime];
-    for (int i = 0; i < 1000; i++) {
-        NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
-        // CoreData插入数据
-        [cdDataBase insertManagedObject:str];
+    for (int i = 0; i < 100; i++) {
+        for (NSString *str in self.insetllArray) {
+            // CoreData插入数据
+            [cdDataBase insertManagedObject:str];
+        }
+        
         NSLog(@"插入第%d条数据",i+1);
     }
     [cdDataBase saveManaged];
@@ -214,13 +229,15 @@
     NSDate *date = [NSDate date];
     RLMRealm *realm = [RLMRealm defaultRealm];
     [self printWillFuncTime];
-    for (int i = 0; i < 1000; i ++) {
-        NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
-        [realm beginWriteTransaction];
-        RTestDataBase *rDataBase = [[RTestDataBase alloc] init];
-        rDataBase.text = str;
-        [realm addObject:rDataBase];
-        [realm commitWriteTransaction];
+    
+    for (int i = 0; i < 100; i ++) {
+        for (NSString *str in self.insetllArray) {
+            [realm beginWriteTransaction];
+            RTestDataBase *rDataBase = [[RTestDataBase alloc] init];
+            rDataBase.text = str;
+            [realm addObject:rDataBase];
+            [realm commitWriteTransaction];
+        }
         NSLog(@"插入第%d条数据",i+1);
     }
     
@@ -254,11 +271,12 @@
     [self printWillFuncTime];
     // Realm 插入数据
     [realm transactionWithBlock:^{
-        for (int i = 0; i < 1000; i ++) {
-            NSString *str = [NSString stringWithFormat:@"数据%d",i+1];
-            RTestDataBase *rDataBase = [[RTestDataBase alloc] init];
-            rDataBase.text = str;
-            [realm addObject:rDataBase];
+        for (int i = 0; i < 100; i ++) {
+            for (NSString *str in self.insetllArray) {
+                RTestDataBase *rDataBase = [[RTestDataBase alloc] init];
+                rDataBase.text = str;
+                [realm addObject:rDataBase];
+            }
             NSLog(@"插入第%d条数据",i+1);
         }
     }];

@@ -85,11 +85,13 @@
 
 - (void)saveManaged
 {
-    NSError *error = nil;
-    if (![[self.provider managedObjectContext] save:&error]) {
-        NSLog(@"操作失败");
-        abort();
-    }
+    __block NSError *error = nil;
+    [[self.provider managedObjectContext] performBlockAndWait:^{
+        if (![[self.provider managedObjectContext] save:&error]) {
+            NSLog(@"操作失败%@",error);
+            abort();
+        }
+    }];
 }
 
 @end
