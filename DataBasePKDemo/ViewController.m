@@ -226,18 +226,18 @@
 
 - (NSString *)deleteRDB:(DataBaseTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    RLMRealm *realm = [RLMRealm defaultRealm];
     NSDate *date = [NSDate date];
+    RLMRealm *realm = [RLMRealm defaultRealm];
     [self printWillFuncTime];
     RLMResults *results = [RTestDataBase allObjects];
-    NSArray *array = [[[RTestDataBase alloc] init] selectDataBase];
-    NSArray *as = [NSArray arrayWithArray:array];
     
-    for (int i = 0; i < array.count; i ++) {
+    int i = 0;
+    while (results.count) {
         [realm beginWriteTransaction];
-        [realm deleteObject:[as objectAtIndex:i]];
-        [realm commitWriteTransaction];
+        [realm deleteObject:[results firstObject]];
         NSLog(@"删除第%d条数据",i + 1);
+        i++;
+        [realm commitWriteTransaction];
     }
     NSLog(@"删除后还有%ld条数据",results.count);
     
