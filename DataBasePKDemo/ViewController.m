@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSArray *dataArray;
 
 @property (strong, nonatomic) NSArray *insetllArray;
+@property (strong, nonatomic) NSString *dataBaseCountStr;
 
 @end
 
@@ -47,6 +48,7 @@
                        @"Realm一次性删除全部数据"];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"DataBaseTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
+    self.tableView.rowHeight = 63;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -60,7 +62,7 @@
     cell.titleLabel.text = self.dataArray[indexPath.row];
     cell.timeLabel.tag = indexPath.row + 1000;
     cell.activityView.tag = indexPath.row + 2000;
-    
+
     return cell;
 }
 
@@ -132,6 +134,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [cell.timeLabel setHidden:NO];
                 cell.timeLabel.text = str;
+                cell.countLabel.text = self.dataBaseCountStr;
             });
         }
         [self.tableView setUserInteractionEnabled:YES];
@@ -151,7 +154,7 @@
         }
         NSLog(@"插入第%d条数据",i+1);
     }
-    
+    self.dataBaseCountStr = [NSString stringWithFormat:@"插入完成后%ld条数据",[fmDataBase selectData].count];
    return [self printFuncDidTime:date];
 }
 
@@ -165,6 +168,7 @@
         [fmDataBase deleteData:obj];
         NSLog(@"删除第%@条数据",obj);
     }];
+    self.dataBaseCountStr = [NSString stringWithFormat:@"删除完成后%ld条数据",[fmDataBase selectData].count];
     return [self printFuncDidTime:date];
 }
 
@@ -181,6 +185,7 @@
         }
             NSLog(@"插入第%d条数据",i+1);
     }
+    self.dataBaseCountStr = [NSString stringWithFormat:@"插入完成后%ld条数据",[cdDataBase selectManagedObjectCount]];
     return [self printFuncDidTime:date];
 }
 
@@ -192,8 +197,9 @@
     [self printWillFuncTime];
     [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [cdDataBase deleteManagedObject:obj];
-        NSLog(@"插入第%@条数据",obj);
+        NSLog(@"删除第%@条数据",obj);
     }];
+    self.dataBaseCountStr = [NSString stringWithFormat:@"删除完成后%ld条数据",[cdDataBase selectManagedObjectCount]];
     return [self printFuncDidTime:date];
 }
 
@@ -211,6 +217,7 @@
         NSLog(@"插入第%d条数据",i+1);
     }
     [cdDataBase saveManaged];
+    self.dataBaseCountStr = [NSString stringWithFormat:@"插入完成后%ld条数据",[cdDataBase selectManagedObjectCount]];
     return [self printFuncDidTime:date];
 }
 
@@ -220,7 +227,7 @@
     NSDate *date = [NSDate date];
     [self printWillFuncTime];
     [cdDataBase deleteAllManagedObject];
-    
+   self.dataBaseCountStr = [NSString stringWithFormat:@"删除完成后%ld条数据",[cdDataBase selectManagedObjectCount]];
     return [self printFuncDidTime:date];
 }
 
@@ -240,7 +247,7 @@
         }
         NSLog(@"插入第%d条数据",i+1);
     }
-    
+   self.dataBaseCountStr = [NSString stringWithFormat:@"插入完成后%ld条数据",[RTestDataBase allObjects ].count];
     return [self printFuncDidTime:date];
 }
 
@@ -259,7 +266,7 @@
         i++;
         [realm commitWriteTransaction];
     }
-    NSLog(@"删除后还有%ld条数据",results.count);
+    self.dataBaseCountStr = [NSString stringWithFormat:@"删除完成后%ld条数据",results.count];
     
     return [self printFuncDidTime:date];
 }
@@ -280,7 +287,7 @@
             NSLog(@"插入第%d条数据",i+1);
         }
     }];
-    
+   self.dataBaseCountStr = [NSString stringWithFormat:@"插入完成后%ld条数据",[RTestDataBase allObjects ].count];
     return [self printFuncDidTime:date];
 }
 
@@ -292,8 +299,7 @@
     [realm beginWriteTransaction];
     [realm deleteAllObjects];
     [realm commitWriteTransaction];
-    RLMResults *results = [RTestDataBase allObjects];
-    NSLog(@"删除后还有%ld条数据",results.count);
+    self.dataBaseCountStr = [NSString stringWithFormat:@"删除完成后%ld条数据",[RTestDataBase allObjects ].count];
     return [self printFuncDidTime:date];
 }
 
