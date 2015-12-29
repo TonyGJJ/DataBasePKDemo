@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHe-Kh-Nau">
-                        <rect key="frame" x="18" y="11" width="100" height="16"/>
+                        <rect key="frame" x="13" y="11" width="100" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="Ir1-db-I5L"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="bMh-C0-ti9"/>
@@ -53,7 +53,7 @@
                     <constraint firstItem="6k3-za-ac6" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="7QV-oZ-Dtf"/>
                     <constraint firstItem="hHe-Kh-Nau" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="Ksk-F2-0lN"/>
                     <constraint firstItem="6k3-za-ac6" firstAttribute="top" secondItem="Zi9-Ky-iSb" secondAttribute="bottom" constant="1" id="VSy-0N-KKX"/>
-                    <constraint firstItem="hHe-Kh-Nau" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="Vhq-f6-XQ3"/>
+                    <constraint firstItem="hHe-Kh-Nau" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Vhq-f6-XQ3"/>
                     <constraint firstAttribute="trailingMargin" secondItem="PSi-sg-uji" secondAttribute="trailing" constant="10" id="eRn-id-nfJ"/>
                     <constraint firstItem="Zi9-Ky-iSb" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="hKB-XI-2sW"/>
                     <constraint firstItem="PSi-sg-uji" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="icL-7t-SyL"/>
