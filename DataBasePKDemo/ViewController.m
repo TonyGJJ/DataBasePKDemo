@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) NSArray *insetllArray;
 @property (strong, nonatomic) NSString *dataBaseCountStr;
+@property (assign, nonatomic) BOOL isClick;
 
 @end
 
@@ -32,7 +33,7 @@
     //第一种方法： NSFileManager实例方法读取数据
     NSString* paths = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"txt"];
     NSString *str = [NSString stringWithContentsOfFile:paths encoding:NSUTF8StringEncoding error:nil];
-    
+    self.isClick = NO;
     self.insetllArray = [str componentsSeparatedByString:@"\n"];
     
     
@@ -68,8 +69,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.isClick) {
+        return;
+    }
     DataBaseTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self process:cell atIndexPath:indexPath];
 }
 
@@ -77,10 +80,9 @@
 {
     NSInteger activitTag = 2000 + indexPath.row;
     NSInteger timeLabelTag = 1000 + indexPath.row;
-    
+    self.isClick = YES;
     if (activitTag == cell.activityView.tag) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setUserInteractionEnabled:NO];
             [cell.activityView setHidden:NO];
             [cell.activityView startAnimating];
             [cell.timeLabel setHidden:YES];
@@ -137,7 +139,7 @@
                 cell.countLabel.text = self.dataBaseCountStr;
             });
         }
-        [self.tableView setUserInteractionEnabled:YES];
+        self.isClick = NO;
     });
 }
 
