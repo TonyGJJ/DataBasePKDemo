@@ -15,7 +15,7 @@
 		CD01493E1C30E586005AAF50 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01493B1C30E586005AAF50 /* Entity+CoreDataProperties.m */; };
 		CD01493F1C30E586005AAF50 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01493D1C30E586005AAF50 /* Entity.m */; };
 		CDB939AE1C327EEB0011B8DF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB939AD1C327EEB0011B8DF /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		CDB939B01C32866E0011B8DF /* Test.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDB939AF1C32866E0011B8DF /* Test.txt */; };
+		CDB939B21C33679A0011B8DF /* Test.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDB939B11C33679A0011B8DF /* Test.txt */; };
 		CDFFBC4D1C323C0700AF6077 /* DataBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFBC4B1C323C0700AF6077 /* DataBaseTableViewCell.m */; };
 		CDFFBC4E1C323C0700AF6077 /* DataBaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFFBC4C1C323C0700AF6077 /* DataBaseTableViewCell.xib */; };
 		EACE4C171C2A940400A3B6C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE4C161C2A940400A3B6C8 /* main.m */; };
@@ -61,7 +61,7 @@
 		CD01493C1C30E586005AAF50 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		CD01493D1C30E586005AAF50 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
 		CDB939AD1C327EEB0011B8DF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		CDB939AF1C32866E0011B8DF /* Test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Test.txt; path = ../../../Desktop/Test.txt; sourceTree = "<group>"; };
+		CDB939B11C33679A0011B8DF /* Test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test.txt; sourceTree = "<group>"; };
 		CDFFBC4A1C323C0700AF6077 /* DataBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTableViewCell.h; sourceTree = "<group>"; };
 		CDFFBC4B1C323C0700AF6077 /* DataBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseTableViewCell.m; sourceTree = "<group>"; };
 		CDFFBC4C1C323C0700AF6077 /* DataBaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataBaseTableViewCell.xib; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		EACE4C141C2A940400A3B6C8 /* DataBasePKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				CDB939AF1C32866E0011B8DF /* Test.txt */,
+				CDB939B11C33679A0011B8DF /* Test.txt */,
 				CD0149271C30E103005AAF50 /* RDataBase */,
 				CD0149251C30E0F0005AAF50 /* CDDataBase */,
 				EACE4C491C2A9DAC00A3B6C8 /* FMDataBase */,
@@ -343,7 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDB939B01C32866E0011B8DF /* Test.txt in Resources */,
+				CDB939B21C33679A0011B8DF /* Test.txt in Resources */,
 				EACE4C251C2A940400A3B6C8 /* LaunchScreen.storyboard in Resources */,
 				EACE4C221C2A940400A3B6C8 /* Assets.xcassets in Resources */,
 				CDFFBC4E1C323C0700AF6077 /* DataBaseTableViewCell.xib in Resources */,
