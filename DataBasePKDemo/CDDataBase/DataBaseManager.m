@@ -53,7 +53,7 @@
     NSArray *array = [[self.provider managedObjectContext] executeFetchRequest:[self.provider fetchRequest]
                                                                          error:&error];
     if (error) {
-        NSLog(@"读取失败");
+        //NSLog(@"读取失败");
         abort();
     }
     return array;
@@ -88,7 +88,7 @@
     __block NSError *error = nil;
     [[self.provider managedObjectContext] performBlockAndWait:^{
         if (![[self.provider managedObjectContext] save:&error]) {
-            NSLog(@"操作失败%@",error);
+            //NSLog(@"操作失败%@",error);
             abort();
         }
     }];

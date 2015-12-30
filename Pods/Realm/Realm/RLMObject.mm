@@ -152,7 +152,7 @@
 }
 
 + (NSArray *)indexedProperties {
-    return @[];
+    return [NSArray array];
 }
 
 + (NSDictionary *)defaultPropertyValues {

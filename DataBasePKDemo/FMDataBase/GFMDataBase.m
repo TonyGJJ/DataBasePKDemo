@@ -35,11 +35,11 @@
         
         self.dataBase = [FMDatabase databaseWithPath:dataPath];
         if ([self.dataBase open]) {
-            NSLog(@"打开成功");
+            //NSLog(@"打开成功");
             self.queue = [FMDatabaseQueue databaseQueueWithPath:self.dataBase.databasePath];
             [self creatTable];
         } else {
-            NSLog(@"打开失败");
+            //NSLog(@"打开失败");
         }
      }
     return self;

@@ -61,7 +61,7 @@
                                                              URL:storeURL
                                                          options:options
                                                            error:&error]) {
-        NSLog(@"协调员创建失败");
+        //NSLog(@"协调员创建失败");
         abort();
     }
     

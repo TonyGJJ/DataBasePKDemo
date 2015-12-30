@@ -5,7 +5,7 @@
 //  Created by 刘杨 on 15/12/23.
 //  Copyright © 2015年 TY. All rights reserved.
 //
-
+#define kAll    10000
 #import "ViewController.h"
 #import "GFMDataBase.h"
 #import "RTestDataBase.h"
@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"程序启动");
+    //NSLog(@"程序启动");
    
     //第一种方法： NSFileManager实例方法读取数据
     NSString* paths = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"txt"];
@@ -149,12 +149,15 @@
     GFMDataBase *fmDataBase = [GFMDataBase sharedInstance];
     [fmDataBase dataBasePath];
     [self printWillFuncTime];
-    
+   
+    int j = 0;
     for (int i = 0; i < 100; i++) {
         for (NSString *str in self.insetllArray) {
             [fmDataBase insertData:str];
+            j++;
+            NSLog(@"插入第%d条数据",j);
         }
-        NSLog(@"插入第%d条数据",i+1);
+        
     }
     self.dataBaseCountStr = [NSString stringWithFormat:@"插入完成后%ld条数据",(unsigned long)[fmDataBase selectData].count];
    return [self printFuncDidTime:date];
@@ -168,7 +171,7 @@
     [self printWillFuncTime];
     [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [fmDataBase deleteData:obj];
-        NSLog(@"删除第%@条数据",obj);
+//        NSLog(@"删除第%ld条数据",(unsigned long)idx);
     }];
     self.dataBaseCountStr = [NSString stringWithFormat:@"删除完成后%ld条数据",(unsigned long)[fmDataBase selectData].count];
     return [self printFuncDidTime:date];
@@ -199,7 +202,7 @@
     [self printWillFuncTime];
     [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [cdDataBase deleteManagedObject:obj];
-        NSLog(@"删除第%@条数据",obj);
+//        NSLog(@"删除第%@条数据",obj);
     }];
     self.dataBaseCountStr = [NSString stringWithFormat:@"删除完成后%ld条数据",(long)[cdDataBase selectManagedObjectCount]];
     return [self printFuncDidTime:date];
@@ -210,13 +213,14 @@
     NSDate *date = [NSDate date];
     DataBaseManager *cdDataBase = [DataBaseManager sharedInstance];
     [self printWillFuncTime];
-    for (int i = 0; i < 100; i++) {
+    int j = 0;
+    for (int i = 0; i < kAll; i++) {
         for (NSString *str in self.insetllArray) {
             // CoreData插入数据
             [cdDataBase insertManagedObject:str];
+            j ++;
+            NSLog(@"%d",j);
         }
-        
-        NSLog(@"插入第%d条数据",i+1);
     }
     [cdDataBase saveManaged];
     self.dataBaseCountStr = [NSString stringWithFormat:@"插入完成后%ld条数据",(long)[cdDataBase selectManagedObjectCount]];
@@ -260,14 +264,14 @@
     [self printWillFuncTime];
     RLMResults *results = [RTestDataBase allObjects];
     
+    [realm beginWriteTransaction];
     int i = 0;
     while (results.count) {
-        [realm beginWriteTransaction];
         [realm deleteObject:[results firstObject]];
         NSLog(@"删除第%d条数据",i + 1);
         i++;
-        [realm commitWriteTransaction];
     }
+    [realm commitWriteTransaction];
     self.dataBaseCountStr = [NSString stringWithFormat:@"删除完成后%ld条数据",(unsigned long)results.count];
     
     return [self printFuncDidTime:date];
@@ -279,14 +283,16 @@
     RLMRealm *realm = [RLMRealm defaultRealm];
     [self printWillFuncTime];
     // Realm 插入数据
+    __block int j = 0;
     [realm transactionWithBlock:^{
-        for (int i = 0; i < 100; i ++) {
+        for (int i = 0; i < kAll; i ++) {
             for (NSString *str in self.insetllArray) {
                 RTestDataBase *rDataBase = [[RTestDataBase alloc] init];
                 rDataBase.text = str;
                 [realm addObject:rDataBase];
+                j++;
+                NSLog(@"插入第%d条数据",j);
             }
-            NSLog(@"插入第%d条数据",i+1);
         }
     }];
    self.dataBaseCountStr = [NSString stringWithFormat:@"插入完成后%ld条数据",(unsigned long)[RTestDataBase allObjects ].count];

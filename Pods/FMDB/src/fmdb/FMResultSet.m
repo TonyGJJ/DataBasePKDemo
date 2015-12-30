@@ -109,7 +109,7 @@
         return FMDBReturnAutoreleased([dict copy]);
     }
     else {
-        NSLog(@"Warning: There seem to be no columns in this set.");
+        //NSLog(@"Warning: There seem to be no columns in this set.");
     }
     
     return nil;
@@ -137,7 +137,7 @@
         return dict;
     }
     else {
-        NSLog(@"Warning: There seem to be no columns in this set.");
+        //NSLog(@"Warning: There seem to be no columns in this set.");
     }
     
     return nil;
@@ -155,8 +155,8 @@
     int rc = sqlite3_step([_statement statement]);
     
     if (SQLITE_BUSY == rc || SQLITE_LOCKED == rc) {
-        NSLog(@"%s:%d Database busy (%@)", __FUNCTION__, __LINE__, [_parentDB databasePath]);
-        NSLog(@"Database busy");
+        //NSLog(@"%s:%d Database busy (%@)", __FUNCTION__, __LINE__, [_parentDB databasePath]);
+        //NSLog(@"Database busy");
         if (outErr) {
             *outErr = [_parentDB lastError];
         }
@@ -165,14 +165,14 @@
         // all is well, let's return.
     }
     else if (SQLITE_ERROR == rc) {
-        NSLog(@"Error calling sqlite3_step (%d: %s) rs", rc, sqlite3_errmsg([_parentDB sqliteHandle]));
+        //NSLog(@"Error calling sqlite3_step (%d: %s) rs", rc, sqlite3_errmsg([_parentDB sqliteHandle]));
         if (outErr) {
             *outErr = [_parentDB lastError];
         }
     }
     else if (SQLITE_MISUSE == rc) {
         // uh oh.
-        NSLog(@"Error calling sqlite3_step (%d: %s) rs", rc, sqlite3_errmsg([_parentDB sqliteHandle]));
+        //NSLog(@"Error calling sqlite3_step (%d: %s) rs", rc, sqlite3_errmsg([_parentDB sqliteHandle]));
         if (outErr) {
             if (_parentDB) {
                 *outErr = [_parentDB lastError];
@@ -188,7 +188,7 @@
     }
     else {
         // wtf?
-        NSLog(@"Unknown error calling sqlite3_step (%d: %s) rs", rc, sqlite3_errmsg([_parentDB sqliteHandle]));
+        //NSLog(@"Unknown error calling sqlite3_step (%d: %s) rs", rc, sqlite3_errmsg([_parentDB sqliteHandle]));
         if (outErr) {
             *outErr = [_parentDB lastError];
         }
@@ -215,7 +215,7 @@
         return [n intValue];
     }
     
-    NSLog(@"Warning: I could not find the column named '%@'.", columnName);
+    //NSLog(@"Warning: I could not find the column named '%@'.", columnName);
     
     return -1;
 }

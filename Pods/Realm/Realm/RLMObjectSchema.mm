@@ -93,7 +93,7 @@ using namespace realm;
     // create array of RLMProperties, inserting properties of superclasses first
     Class cls = objectClass;
     Class superClass = class_getSuperclass(cls);
-    NSArray *props = @[];
+    NSArray *props = [NSArray array];
     while (superClass && superClass != RLMObjectBase.class) {
         props = [[RLMObjectSchema propertiesForClass:cls isSwift:isSwift] arrayByAddingObjectsFromArray:props];
         cls = superClass;
