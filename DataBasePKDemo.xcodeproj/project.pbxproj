@@ -14,6 +14,7 @@
 		CD0149331C30E4FD005AAF50 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD0149311C30E4FD005AAF50 /* CoreDataModel.xcdatamodeld */; };
 		CD01493E1C30E586005AAF50 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01493B1C30E586005AAF50 /* Entity+CoreDataProperties.m */; };
 		CD01493F1C30E586005AAF50 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01493D1C30E586005AAF50 /* Entity.m */; };
+		CD3490C61C3372DF0042B5C3 /* 应用说明.md in Sources */ = {isa = PBXBuildFile; fileRef = CD3490C51C3372DF0042B5C3 /* 应用说明.md */; };
 		CDB939AE1C327EEB0011B8DF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB939AD1C327EEB0011B8DF /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CDB939B21C33679A0011B8DF /* Test.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDB939B11C33679A0011B8DF /* Test.txt */; };
 		CDFFBC4D1C323C0700AF6077 /* DataBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFBC4B1C323C0700AF6077 /* DataBaseTableViewCell.m */; };
@@ -60,6 +61,7 @@
 		CD01493B1C30E586005AAF50 /* Entity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entity+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CD01493C1C30E586005AAF50 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		CD01493D1C30E586005AAF50 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
+		CD3490C51C3372DF0042B5C3 /* 应用说明.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "应用说明.md"; sourceTree = "<group>"; };
 		CDB939AD1C327EEB0011B8DF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		CDB939B11C33679A0011B8DF /* Test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test.txt; sourceTree = "<group>"; };
 		CDFFBC4A1C323C0700AF6077 /* DataBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTableViewCell.h; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		EACE4C091C2A940400A3B6C8 = {
 			isa = PBXGroup;
 			children = (
+				CD3490C51C3372DF0042B5C3 /* 应用说明.md */,
 				EACE4C141C2A940400A3B6C8 /* DataBasePKDemo */,
 				EACE4C2E1C2A940500A3B6C8 /* DataBasePKDemoTests */,
 				EACE4C391C2A940500A3B6C8 /* DataBasePKDemoUITests */,
@@ -420,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3490C61C3372DF0042B5C3 /* 应用说明.md in Sources */,
 				CD01493F1C30E586005AAF50 /* Entity.m in Sources */,
 				EACE4C1D1C2A940400A3B6C8 /* ViewController.m in Sources */,
 				EACE4C1A1C2A940400A3B6C8 /* AppDelegate.m in Sources */,
